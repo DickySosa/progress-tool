@@ -1,0 +1,39 @@
+.home-container {
+    min-width: 247px;
+    background: rgb(203, 153, 126);
+    background: linear-gradient(0deg, rgba(203, 153, 126, 1) 0%, rgba(107, 112, 92, 1) 100%);
+}
+
+.header-container {
+    display: grid;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #ffe8d6;
+}
+
+.btn {
+    height: 35px;
+    width: 50%; 
+    min-width: 227px;
+    max-width: 450px;
+    border-radius: 10px;
+    background-color: #b7b7a4;
+}
+.btn:hover{
+    background-color: #9b9b8b;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    row-gap: 2rem; 
+}
+.btn-container button:last-child {
+    margin-bottom: 14rem; 
+  }
+  
