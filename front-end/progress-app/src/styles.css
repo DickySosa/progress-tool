@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.box-shadow{
+    box-shadow: -9px 8px 17px 4px #000000;
+}
+.calculator{
+    background-color: grey;
+}
+.header-container {
+    display: grid;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #ffe8d6;
+}

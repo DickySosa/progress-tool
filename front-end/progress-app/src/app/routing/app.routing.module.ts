@@ -6,6 +6,7 @@ import { BasalMetabolicRateComponent } from "../pages/calculators/basal-metaboli
 import { BodyFatPercentageComponent } from "../pages/calculators/body-fat-percentage/body-fat-percentage.component";
 import { MuscleMassIndexComponent } from "../pages/calculators/muscle-mass-index/muscle-mass-index.component";
 
+
 const routes:Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
