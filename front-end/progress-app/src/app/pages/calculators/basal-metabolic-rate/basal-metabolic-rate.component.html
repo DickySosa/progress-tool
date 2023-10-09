@@ -6,9 +6,8 @@
     </header>
 
     <section>
-        <button (click)="handleNavigation()">Back to home</button>
+        <i (click)="handleNavigation()"  class="fa fa-arrow-left">Back to home</i> <br><br>
         <label for="gender">Genero: </label>
-        <br>
         <label for="gender">Hombre: </label>
         <input type="radio" />
         <label for="gender">Mujer: </label>
@@ -16,12 +15,8 @@
         <hr>
 
         <label for="weight">Peso: </label>
-        <br>
         <input type="text" name="" id="" placeholder="">
         <label for="weight">Kilos</label>
-        <input type="radio" />
-        <label for="weight">Libras</label>
-        <input type="radio" />
         <hr>
 
         <label for="height">Estatura: </label>
@@ -40,6 +35,8 @@
             <option value="1.725">Actividad intensa</option>
             <option value="1.9">Actividad muy intensa</option>
         </select>
+
+        <h3>Su tasa metabolica basal es: </h3>
     </section>
 
     <footer>
