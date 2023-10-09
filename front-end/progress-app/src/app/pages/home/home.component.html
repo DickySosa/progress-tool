@@ -6,12 +6,11 @@
         </h1>
     </header>
 
-    <app-button></app-button>
     <nav class="btn-container">
-        <button (click)="handleNavigation('body-measurements')" class="btn">Body measurements</button>
-        <button (click)="handleNavigation('basal-metabolic-rate')" class="btn">Basal Metabolic Rate</button>
-        <button (click)="handleNavigation('body-fat-percentage')" class="btn">Body Fat Percentage</button>
-        <button (click)="handleNavigation('muscle-mass-index')" class="btn">Muscle Mass Index</button>
+        <app-button [path]="'body-measurements'" [label]="'Body measurements'"></app-button>
+        <app-button [path]="'basal-metabolic-rate'" [label]="'Basal Metabolic Rate'"></app-button>
+        <app-button [path]="'body-fat-percentage'" [label]="'Body Fat Percentage'"></app-button>
+        <app-button [path]="'muscle-mass-index'" [label]="'Muscle Mass Index'"></app-button>
     </nav>
 
 </main>

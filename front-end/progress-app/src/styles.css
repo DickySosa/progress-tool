@@ -14,3 +14,15 @@
     text-align: center;
     color: #ffe8d6;
 }
+
+.btn {
+    height: 35px;
+    width: 50%; 
+    min-width: 227px;
+    max-width: 450px;
+    border-radius: 10px;
+    background-color: #b7b7a4;
+}
+.btn:hover{
+    background-color: #9b9b8b;
+}

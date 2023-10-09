@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body-fat-percentage',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./body-fat-percentage.component.css']
 })
 export class BodyFatPercentageComponent {
+
+  constructor(private router:Router){}
+
+  handleNavigation(){
+    this.router.navigate(['home'])
+  }
 
 }
