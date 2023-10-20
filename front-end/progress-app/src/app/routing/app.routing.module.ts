@@ -1,11 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "../pages/home/home.component";
-import { BodyMeasurementsComponent } from "../pages/info/body-measurements/body-measurements.component";
-import { BasalMetabolicRateComponent } from "../pages/calculators/basal-metabolic-rate/basal-metabolic-rate.component";
-import { BodyFatPercentageComponent } from "../pages/calculators/body-fat-percentage/body-fat-percentage.component";
-import { MuscleMassIndexComponent } from "../pages/calculators/muscle-mass-index/muscle-mass-index.component";
-import { ButtonComponent } from "../components/button/button.component";
 
 const routes: Routes = [
     { path: 'home', redirectTo: '/', pathMatch: 'full' },

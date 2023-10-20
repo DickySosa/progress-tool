@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-muscle-mass-index',
   templateUrl: './muscle-mass-index.component.html',
@@ -8,9 +9,18 @@ import { Router } from '@angular/router';
 })
 export class MuscleMassIndexComponent {
 
-  constructor(private router: Router){}
+  result!:string;
 
-  handleNavigation(){
+  constructor(private router: Router) { }
+
+  handleNavigation() {
     this.router.navigate(['home'])
+  }
+
+  calculateImc(weight:number, height:number) {
+    console.log(`Weight: ${weight}, Height: ${height}`)
+    let x:number = weight/(height ** 2);
+    let imc:string = x.toFixed(1);
+    this.result = imc;
   }
 }

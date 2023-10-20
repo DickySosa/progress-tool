@@ -1,5 +1,3 @@
-<p>muscle-mass-index works!</p>
-
 <main class="box-shadow calculator">
     <header class="header-container">
         <h1 class="title">
@@ -11,23 +9,18 @@
         <i (click)="handleNavigation()"  class="fa fa-arrow-left back-btn">Back to home</i> <br><br>
 
         <label for="weight">Peso: </label>
-        <input type="text" name="" id="" placeholder="">
-        <label for="weight">Kilos</label>
+        <input type="number" placeholder="kg"  #weight>
         <hr>
 
-        <label for="height">Estatura: </label>
-        <input type="number" placeholder="cm">
+        <label for="height" >Estatura: </label>
+        <input type="number" placeholder="m"  #height>
         <hr>
 
-        <label for="age">Edad: </label>
-        <input type="number">
-        <hr>
-
-        <h3>Su indice de masa muscular es: </h3>
+        <h3 *ngIf="result">Su indice de masa muscular es: {{result}} </h3>
     </section>
 
     <footer>
-        <button>
+        <button (click)="calculateImc(weight.valueAsNumber, height.valueAsNumber)">
             Calcular
         </button>
     </footer>
