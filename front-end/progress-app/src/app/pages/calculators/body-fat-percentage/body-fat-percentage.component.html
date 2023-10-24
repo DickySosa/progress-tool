@@ -6,45 +6,48 @@
     </header>
 
     <section>
-        <i (click)="handleNavigation()"  class="fa fa-arrow-left back-btn">Back to home</i> <br><br>
+        <i (click)="handleNavigation()" class="fa fa-arrow-left back-btn">Back to home</i> <br><br>
 
         <label for="gender">Genero: </label>
-        <br>
-        <label for="gender">Hombre: </label>
-        <input type="radio" />
-        <label for="gender">Mujer: </label>
-        <input type="radio" />
+
+        <input type="radio" id="hombre" name="gender" value="hombre" [(ngModel)]="selectedGender"/>
+        <label for="hombre">Hombre</label>
+
+        <input type="radio" id="mujer" name="gender" value="mujer" [(ngModel)]="selectedGender"/>
+        <label for="mujer">Mujer</label>
+
         <hr>
 
         <label for="weight">Peso: </label>
-        <input type="text" name="" id="" placeholder="Kg">
+        <input type="number" placeholder="Kg" #weight>
         <br>
         <hr>
 
         <label for="height">Estatura: </label>
-        <input type="number" placeholder="cm">
+        <input type="number" placeholder="cm" #height>
         <hr>
 
-        <label for="height">Circunfernecia de cintura: </label>
-        <input type="number" placeholder="cm">
+        <label for="waistSize">Circunfernecia de cintura: </label>
+        <input type="number" placeholder="cm" #waistSize>
         <hr>
 
-        <label for="height">Circunfernecia de cuello: </label>
-        <input type="number" placeholder="cm">
+        <label for="neckSize">Circunfernecia de cuello: </label>
+        <input type="number" placeholder="cm" #neckSize>
         <hr>
 
-        <!-- *ngIf='mujer' -->
+        <!-- *ngIf='mujer', removing nfIf -->
         <div>
-        <label for="height">Circunfernecia de cuello: </label>
-        <input type="number" placeholder="cm">
-        <hr>
+            <label for="hipSize">Circunferencia de cadera: </label>
+            <input type="number" placeholder="cm" name="hipSize" id="hipSize" #hipSize/>
+            <hr>
         </div>
 
-        <h3> Su porcentaje de grasa es: </h3>
+        <h3 *ngIf="result"> Su porcentaje de grasa es: {{result}}</h3>
     </section>
 
     <footer>
-        <button>
+        <button
+            (click)="calculate(weight.value, height.value, waistSize.value, neckSize.value, hipSize.value)">
             Calcular
         </button>
     </footer>
