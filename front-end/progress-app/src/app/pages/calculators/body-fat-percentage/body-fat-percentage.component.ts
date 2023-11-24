@@ -10,12 +10,19 @@ export class BodyFatPercentageComponent {
 
   result!:number;
   selectedGender:string = "hombre";
-
+  hipSize: number | undefined;
 
   constructor(private router:Router){}
 
   handleNavigation(){
     this.router.navigate(['home'])
+  }
+
+  getGenderClasses() {
+    return {
+      'show-block': this.selectedGender === 'mujer',
+      'hide': this.selectedGender === 'hombre'
+    };
   }
 
   calculate(weight:string, height:string, waist:string,neck:string,hip?:string | undefined){
@@ -24,39 +31,28 @@ export class BodyFatPercentageComponent {
     const waistValue = parseFloat(waist);
     const neckValue = parseFloat(neck);
     const hipValue = parseFloat(hip!);
-    console.log(weightValue,heightValue,neckValue,waistValue,hipValue)
 
-    
-    
-    
-    if (hipValue) {
-      // Women
-      let hipWaistNeck: number = waistValue + hipValue - neckValue;
-      let logHipNeckWaist: number = Math.log(hipWaistNeck);
-      let a: number = 1.29579 - 0.35004 * logHipNeckWaist;
-      let b: number = 0.22100 * Math.log(heightValue);
-      let womenBodyFat: number = (495 / (a + b)) - 450;
-      this.result = womenBodyFat;
-      console.log('log women', logHipNeckWaist);
-      console.log('contains hip');
-    } else {
-      // Men
-      let neckWaist: number = waistValue - neckValue;
-      let logNeckWaist: number = Math.log(neckWaist);
-      let a: number = 1.0324 - 0.19077 * logNeckWaist;
-      let b: number = 0.15456 * Math.log(heightValue);
-      let menBodyFat: number = (495 / (a + b)) - 450;
-      this.result = menBodyFat;
-      console.log('log men', logNeckWaist);
-      console.log('not contains hip');
+    if(this.selectedGender === 'mujer'){
+      
+      const cinturaCaderaCuello:number = (waistValue + hipValue) - neckValue
+      const logCinturaCaderaCuello:number = 0.35004*Math.log10(cinturaCaderaCuello);
+      const logAltura = 0.22100*Math.log10(heightValue);
+      console.log(logAltura)
+      const divisor:number = 1.29579 - logCinturaCaderaCuello + logAltura
+      this.result = (495 / divisor)  - 450;
     }
+    const cinturaCuello:number = waistValue - neckValue
+    const logCinturaCuello:number = 0.19077*Math.log10(cinturaCuello);
+    const logAltura = 0.15456*Math.log10(heightValue);
+    console.log(logAltura)
+    const divisor:number = 1.0324 - logCinturaCuello + logAltura
+    this.result = (495 / divisor)  - 450;
 
-    let imc:number = 70.6/(1.83 ** 2)
-    console.log("IMC-->", imc)
 
-    let grasa:number = (1.20*imc)+(0.23*20)-(10.8*1)-5.4
-
-    console.log('Porcentaje de grasa ---->', grasa)
+    /*
+    % Grasa corporal = (1.20 x IMC) + (0.23 x Edad) – (10.8 x Genero*) – 5.4.
+    */
+    //set result
+    //this.result = grasa;
   }
-
 }

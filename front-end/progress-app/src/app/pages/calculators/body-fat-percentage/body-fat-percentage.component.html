@@ -35,14 +35,14 @@
         <input type="number" placeholder="cm" #neckSize>
         <hr>
 
-        <!-- *ngIf='mujer', removing nfIf -->
-        <div>
+        <!-- *ngIf='mujer', removing ng If -->
+        <div [ngClass]="getGenderClasses()">
             <label for="hipSize">Circunferencia de cadera: </label>
-            <input type="number" placeholder="cm" name="hipSize" id="hipSize" #hipSize/>
+            <input type="number" placeholder="cm" name="hipSize" id="hipSize" #hipSize />
             <hr>
-        </div>
+          </div>
 
-        <h3 *ngIf="result"> Su porcentaje de grasa es: {{result}}</h3>
+        <h3 *ngIf="result"> Su porcentaje de grasa es: {{result}} %</h3>
     </section>
 
     <footer>
