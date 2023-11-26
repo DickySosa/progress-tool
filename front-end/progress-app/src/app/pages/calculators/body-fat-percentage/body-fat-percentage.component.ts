@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { menBodyFatGenerator } from 'src/app/helper/bodyFatFunctions';
+import { womenBodyFatGenerator } from 'src/app/helper/bodyFatFunctions';
+
+interface Constants {
+  WOMEN_CONSTANT: number;
+  MEN_CONSTANT: number;
+  DIVIDENDO:number;
+  RESTA:number;
+}
 
 @Component({
   selector: 'app-body-fat-percentage',
@@ -11,6 +20,13 @@ export class BodyFatPercentageComponent {
   result!:number;
   selectedGender:string = "hombre";
   hipSize: number | undefined;
+
+  CONSTANTS: Constants = {
+    WOMEN_CONSTANT: 1.29579,
+    MEN_CONSTANT: 1.0324,
+    DIVIDENDO: 495,
+    RESTA: 450
+  };
 
   constructor(private router:Router){}
 
@@ -25,34 +41,15 @@ export class BodyFatPercentageComponent {
     };
   }
 
-  calculate(weight:string, height:string, waist:string,neck:string,hip?:string | undefined){
-    const weightValue = parseFloat(weight);
+  calculate(height:string, waist:string,neck:string,hip?:string | undefined){
     const heightValue = parseFloat(height);
     const waistValue = parseFloat(waist);
     const neckValue = parseFloat(neck);
     const hipValue = parseFloat(hip!);
 
     if(this.selectedGender === 'mujer'){
-      
-      const cinturaCaderaCuello:number = (waistValue + hipValue) - neckValue
-      const logCinturaCaderaCuello:number = 0.35004*Math.log10(cinturaCaderaCuello);
-      const logAltura = 0.22100*Math.log10(heightValue);
-      console.log(logAltura)
-      const divisor:number = 1.29579 - logCinturaCaderaCuello + logAltura
-      this.result = (495 / divisor)  - 450;
+      this.result = womenBodyFatGenerator(waistValue,hipValue,neckValue, heightValue,this.CONSTANTS.WOMEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
     }
-    const cinturaCuello:number = waistValue - neckValue
-    const logCinturaCuello:number = 0.19077*Math.log10(cinturaCuello);
-    const logAltura = 0.15456*Math.log10(heightValue);
-    console.log(logAltura)
-    const divisor:number = 1.0324 - logCinturaCuello + logAltura
-    this.result = (495 / divisor)  - 450;
-
-
-    /*
-    % Grasa corporal = (1.20 x IMC) + (0.23 x Edad) – (10.8 x Genero*) – 5.4.
-    */
-    //set result
-    //this.result = grasa;
+    this.result = menBodyFatGenerator(waistValue,neckValue, heightValue,this.CONSTANTS.MEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
   }
 }
