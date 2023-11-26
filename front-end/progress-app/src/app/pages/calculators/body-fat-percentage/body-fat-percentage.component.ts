@@ -49,7 +49,8 @@ export class BodyFatPercentageComponent {
 
     if(this.selectedGender === 'mujer'){
       this.result = womenBodyFatGenerator(waistValue,hipValue,neckValue, heightValue,this.CONSTANTS.WOMEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
+    }else {
+      this.result = menBodyFatGenerator(waistValue,neckValue, heightValue,this.CONSTANTS.MEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
     }
-    this.result = menBodyFatGenerator(waistValue,neckValue, heightValue,this.CONSTANTS.MEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
   }
 }

@@ -13,4 +13,10 @@ export class BasalMetabolicRateComponent {
   handleNavigation(){
     this.router.navigate(['home'])
   }
+
+  /**
+   * (10 x peso de Kg) + (6,25 x altura en cm) – (5 x edad en años) + 5
+   */
+  // console.log()
+
 }
