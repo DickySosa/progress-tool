@@ -6,42 +6,47 @@
     </header>
 
     <section>
-        <i (click)="handleNavigation()"  class="fa fa-arrow-left back-btn">Back to home</i> <br><br>
+        <i (click)="handleNavigation()" class="fa fa-arrow-left back-btn">Back to home</i> <br><br>
         <label for="gender">Genero: </label>
+
         <label for="gender">Hombre: </label>
-        <input type="radio" />
+        <input type="radio" id="hombre" name="gender" value="hombre" [(ngModel)]="selectedGender" />
+
         <label for="gender">Mujer: </label>
-        <input type="radio" />
+        <input type="radio" id="mujer" name="gender" value="mujer" [(ngModel)]="selectedGender" />
         <hr>
 
-        <label for="weight">Peso: </label>
-        <input type="text" name="" id="" placeholder="">
-        <label for="weight">Kilos</label>
+        <label for="weigth">Peso: </label>
+        <input type="number" placeholder="kg" #weigth="ngModel" ngModel>
+
         <hr>
 
-        <label for="height">Estatura: </label>
-        <input type="number" placeholder="cm">
+        <label for="heigth">Estatura: </label>
+        <input type="number" placeholder="cm" #heigth="ngModel" ngModel>
+
         <hr>
 
         <label for="age">Edad: </label>
-        <input type="number">
+        <input type="number" #age="ngModel" ngModel>
+
         <hr>
 
-        <label for="activity-level">Nivel de actividad</label>
-        <select name="activity-level" id="">
+        <label for="activityLevel">Nivel de actividad</label>
+        <select name="activityLevel" #activityLevel="ngModel" ngModel>
             <option value="1.2">Sedentario</option>
             <option value="1.375">Actividad ligera</option>
             <option value="1.55">Actividad moderada</option>
             <option value="1.725">Actividad intensa</option>
             <option value="1.9">Actividad muy intensa</option>
         </select>
+        <h3 *ngIf="result">Su tasa metabolica basal es: {{result}} </h3>
 
-        <h3>Su tasa metabolica basal es: </h3>
     </section>
 
     <footer>
-        <button>
+        <button (click)="calculate(weigth.value, heigth.value, age.value, activityLevel.value, selectedGender)">
             Calcular
         </button>
+
     </footer>
 </main>
