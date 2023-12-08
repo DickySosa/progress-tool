@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { menBodyFatGenerator } from 'src/app/helper/bodyFatFunctions';
-import { womenBodyFatGenerator } from 'src/app/helper/bodyFatFunctions';
+import { UserFunction } from 'src/app/helper/functions';
+//import { menBodyFatGenerator } from 'src/app/helper/bodyFatFunctions';
+//import { womenBodyFatGenerator } from 'src/app/helper/bodyFatFunctions';
 
 interface Constants {
   WOMEN_CONSTANT: number;
@@ -20,6 +21,7 @@ export class BodyFatPercentageComponent {
   result!:number;
   selectedGender:string = "hombre";
   hipSize: number | undefined;
+  user:UserFunction = UserFunction.getInstance();
 
   CONSTANTS: Constants = {
     WOMEN_CONSTANT: 1.29579,
@@ -41,16 +43,13 @@ export class BodyFatPercentageComponent {
     };
   }
 
-  calculate(height:string, waist:string,neck:string,hip?:string | undefined){
+  calculate(height:string, waist:string,neck:string,selectedGender:string,hip?:string | undefined){
     const heightValue = parseFloat(height);
     const waistValue = parseFloat(waist);
     const neckValue = parseFloat(neck);
     const hipValue = parseFloat(hip!);
-
-    if(this.selectedGender === 'mujer'){
-      this.result = womenBodyFatGenerator(waistValue,hipValue,neckValue, heightValue,this.CONSTANTS.WOMEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
-    }else {
-      this.result = menBodyFatGenerator(waistValue,neckValue, heightValue,this.CONSTANTS.MEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA);
+    console.log(typeof(selectedGender));
+    console.log(heightValue, waistValue,neckValue,hipValue, selectedGender)
+      this.result = this.user.bodyFatGenerator(waistValue,hipValue,neckValue, heightValue,this.CONSTANTS.WOMEN_CONSTANT,this.CONSTANTS.MEN_CONSTANT,this.CONSTANTS.DIVIDENDO,this.CONSTANTS.RESTA,selectedGender);
     }
   }
-}
