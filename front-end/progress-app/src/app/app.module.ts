@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routing/app.routing.module';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,8 +11,7 @@ import { AppRoutingModule } from './routing/app.routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // FormsModule,
-    // CommonModule
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
